@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <title>Musingles | GN</title>
+    <style>
+        body{
+            background-color: #198754;
+        }
+        #content-form{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        #alertForm,
+        #t-welcome,
+        #btnSair{
+            display: none;
+        }
+        #t-class{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">MUSINGLES</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">UPF</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Contato
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Linkedin</a></li>
+                            <li><a class="dropdown-item" href="#">GitHub</a></li>
+                            <li><a class="dropdown-item" href="#">Instagram</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">YouTube</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div id="btnSair" class="d-flex">
+                    <button class="btn btn-danger">Sair</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="t-welcome">
+        <h1 class="text-white text-center mt-5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-chat-quote-fill" viewBox="0 0 16 16">
+                <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM7.194 6.766a1.688 1.688 0 0 0-.227-.272 1.467 1.467 0 0 0-.469-.324l-.008-.004A1.785 1.785 0 0 0 5.734 6C4.776 6 4 6.746 4 7.667c0 .92.776 1.666 1.734 1.666.343 0 .662-.095.931-.26-.137.389-.39.804-.81 1.22a.405.405 0 0 0 .011.59c.173.16.447.155.614-.01 1.334-1.329 1.37-2.758.941-3.706a2.461 2.461 0 0 0-.227-.4zM11 9.073c-.136.389-.39.804-.81 1.22a.405.405 0 0 0 .012.59c.172.16.446.155.613-.01 1.334-1.329 1.37-2.758.942-3.706a2.466 2.466 0 0 0-.228-.4 1.686 1.686 0 0 0-.227-.273 1.466 1.466 0 0 0-.469-.324l-.008-.004A1.785 1.785 0 0 0 10.07 6c-.957 0-1.734.746-1.734 1.667 0 .92.777 1.666 1.734 1.666.343 0 .662-.095.931-.26z"/>
+            </svg>
+            Sistema pra você aprender <b class="text-warning">inglês</b> com <b class="text-warning">músicas</b>!
+        </h1>
+        <div id="content-form" class="bg-white p-4 rounded text-center">
+            <p class="h3 text-dark p-2">Preencha o formulário para iniciar ;)</p>
+            <div class="alert alert-danger" id="alertForm">
+                <strong>Erro!</strong>
+                Favor completar todos os campos corretamente
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" id="nome" placeholder="Seu nome" aria-label="Nome" required>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" id="sobrenome" placeholder="Sobrenome" aria-label="Sobrenome" required>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <input type="number" class="form-control" id="idade" placeholder="Sua idade" aria-label="Idade" required>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" id="cidade" placeholder="Cidade" aria-label="Cidade" required>
+                </div>
+                <div class="col">
+                    <input type="email" class="form-control" id="email" placeholder="Seu email" aria-label="Email" required>
+                </div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-warning w-100" onclick="submitForm()">Enviar</button>
+        </div>
+    </div>
+    <div id="t-class" class="text-center">
+        <h1 class="text-white text-center mt-5">Música 01 - Bohemian Rhapsody</h1>
+        <h4 class="text-warning">Queen</h4>
+        <div id="content-form" class="bg-white p-4 rounded text-center">
+            <h2>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
+                    <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
+                    <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
+                    <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
+                    <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+                Nível 
+                <b class="text-warning">1</b>
+            </h2>
+            <h6>Escute a música e acompanhe a legenda</h6>
+            <br>
+            <audio controls>
+                <source src="bohemian.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <hr>
+            <p>Inglês:</p>
+            <h3 class="text-warning"><marquee behavior="slide" scrolldelay="100" direction="left" id="legendEn"></marquee></h3>
+            <br>
+            <p>Portugues:</p>
+            <h3 class="text-warning"><marquee behavior="slide" scrolldelay="100" direction="left" id="legendBr"></marquee></h3>
+            <p id="tempoAudio"></p>
+        </div>
+    </div>
+</body>
+<script>
+    var frases = [
+        {ingles:"Is this the real life?",portugues:"É esta a vida real ?",fim:5},
+        {ingles:"Is this just fantasy?",portugues:"Isso é apenas fantasia?",fim:8},
+        {ingles:"Caught in a landslide",portugues:"Preso em um desmoronamento",fim:12},
+        {ingles:"No escape from reality",portugues:"Sem escapatória da realidade",fim:16},
+        {ingles:"Open your eyes",portugues:"Abra seus olhos",fim:19},
+        {ingles:"Look up to the skies and see",portugues:"Olhe para os céus e veja",fim:26},
+        {ingles:"I'm just a poor boy",portugues:"Eu sou só um pobre garoto",fim:29},
+        {ingles:"I'm just a poor boy",portugues:"Eu sou só um pobre garoto",fim:29},
+        {ingles:"",portugues:"",fim:29},
+    ];
+    var frase = 0;
+    var enLegenda = document.getElementById('legendEn');
+    var brLegenda = document.getElementById('legendBr');
+    var legendas = document.querySelectorAll('marquee');
+    var audio = document.querySelector('audio');
+    audio.ontimeupdate = function() {updateAudio()};
+    function submitForm()
+    {
+        var nome = document.querySelector('#nome').value;
+        var sobrenome = document.querySelector('#sobrenome').value;
+        var idade = document.querySelector('#idade').value;
+        var cidade = document.querySelector('#cidade').value;
+        var email = document.querySelector('#email').value;
+        var emailState = email.indexOf("@");
+        if(!nome || !sobrenome || !idade || !cidade || !email || emailState == -1)
+        {
+            document.querySelector('#alertForm').style.display = "block";
+        }
+        else
+        {
+            document.querySelector('#t-welcome').style.display = "none";
+            document.querySelector('#t-class').style.display = "block";
+            document.querySelector('#btnSair').style.display = "block";
+        }
+    }
+    function updateAudio()
+    {
+        var tempoAtual = document.getElementById('tempoAudio').innerHTML = Math.round(audio.currentTime);
+        if(tempoAtual == frases[frase]['fim'])
+        {
+            frase++;
+            enLegenda.innerHTML = frases[frase]['ingles'];
+            brLegenda.innerHTML = frases[frase]['portugues'];
+        }
+    }
+    audio.onplay = function() { 
+        enLegenda.innerHTML = frases[0]['ingles'];
+        brLegenda.innerHTML = frases[0]['portugues'];
+    };
+    audio.onplaying = function() { 
+        enLegenda.start();
+        brLegenda.start();
+    };
+    audio.onpause = function() {
+        enLegenda.stop();
+        brLegenda.stop();
+    }
+</script>
+</html>
