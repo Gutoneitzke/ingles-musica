@@ -19,11 +19,11 @@
             transform: translate(-50%,-50%);
         }
         #alertForm,
-        #t-welcome,
+        #t-class,
         #btnSair{
             display: none;
         }
-        #t-class{
+        #t-welcome{
             display: block;
         }
     </style>
@@ -41,7 +41,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">UPF</a>
+                        <a class="nav-link" href="upf.html">UPF</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -56,8 +56,8 @@
                         </ul>
                     </li>
                 </ul>
-                <div id="btnSair" class="d-flex">
-                    <button class="btn btn-danger">Sair</button>
+                <div class="d-flex">
+                    <button id="btnSair" onclick="backHome()" class="btn btn-danger">Sair</button>
                 </div>
             </div>
         </div>
@@ -138,8 +138,22 @@
         {ingles:"Open your eyes",portugues:"Abra seus olhos",fim:19},
         {ingles:"Look up to the skies and see",portugues:"Olhe para os céus e veja",fim:26},
         {ingles:"I'm just a poor boy",portugues:"Eu sou só um pobre garoto",fim:29},
-        {ingles:"I'm just a poor boy",portugues:"Eu sou só um pobre garoto",fim:29},
-        {ingles:"",portugues:"",fim:29},
+        {ingles:"I need no sympathy",portugues:"Eu não preciso de compaixão",fim:33},
+        {ingles:"Because I'm easy come, easy go",portugues:"Porque eu venho fácil, vou fácil",fim:36},
+        {ingles:"Little high, little low",portugues:"Um pouco alto, pouco baixo",fim:39},
+        {ingles:"Anyway the wind blows",portugues:"Qualquer caminho que o vento sopre",fim:43},
+        {ingles:"Doesn't really matter to me",portugues:"Não importa realmente para mim",fim:49},
+        {ingles:"To me",portugues:"Para mim",fim:57},
+        {ingles:"Mama, just killed a man",portugues:"Mamãe, acabei de matar um homem",fim:63},
+        {ingles:"Put a gun against his head",portugues:"Coloquei uma arma na cabeça dele",fim:66},
+        {ingles:"Pulled my trigger, now he's dead",portugues:"Puxei o gatilho, agora ele está morto",fim:70},
+        {ingles:"Mama, life had just begun",portugues:"Mamãe, a vida tinha acabado de começar",fim:78},
+        {ingles:"But now I've gone and thrown it all away",portugues:"Mas agora está acabado e eu joguei tudo fora",fim:84},
+        {ingles:"Mama! Ooh!",portugues:"Mamãe! Ooh!",fim:90},
+        {ingles:"Didn't mean to make you cry",portugues:"Não foi minha intenção fazê-la chorar",fim:94},
+        {ingles:"If I'm not back again this time tomorrow",portugues:"Se eu não estiver de volta a esta hora amanhã",fim:99},
+        {ingles:"Carry on, carry on",portugues:"Siga em frente, siga em frente",fim:103},
+        {ingles:"As if nothing really matters",portugues:"Como se nada realmente importasse",fim:112}
     ];
     var frase = 0;
     var enLegenda = document.getElementById('legendEn');
@@ -147,6 +161,12 @@
     var legendas = document.querySelectorAll('marquee');
     var audio = document.querySelector('audio');
     audio.ontimeupdate = function() {updateAudio()};
+    function backHome()
+    {
+        document.querySelector('#t-welcome').style.display = "block";
+        document.querySelector('#t-class').style.display = "none";
+        document.querySelector('#btnSair').style.display = "none";
+    }
     function submitForm()
     {
         var nome = document.querySelector('#nome').value;
