@@ -20,7 +20,8 @@
         }
         #alertForm,
         #t-class,
-        #btnSair{
+        #btnSair,
+        #alertSuccess{
             display: none;
         }
         #t-welcome{
@@ -100,8 +101,9 @@
         </div>
     </div>
     <div id="t-class" class="text-center">
-        <h1 class="text-white text-center mt-5">Música 01 - Bohemian Rhapsody</h1>
+        <h1 class="text-white text-center">Música 01 - Bohemian Rhapsody</h1>
         <h4 class="text-warning">Queen</h4>
+        <br>
         <div id="content-form" class="bg-white p-4 rounded text-center">
             <h2>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
@@ -116,7 +118,7 @@
             <h6>Escute a música e acompanhe a legenda</h6>
             <br>
             <audio controls>
-                <source src="bohemian.mp3" type="audio/mpeg">
+                <source src="musics/bohemian.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
             <hr>
@@ -125,7 +127,12 @@
             <br>
             <p>Portugues:</p>
             <h3 class="text-warning"><marquee behavior="slide" scrolldelay="100" direction="left" id="legendBr"></marquee></h3>
-            <p id="tempoAudio"></p>
+            <div class="alert alert-success" id="alertSuccess">
+                <strong>Parabéns!</strong>
+                Nível finalizado com sucesso!
+            </div>
+            <p id="timerRedirect"></p>
+            <!-- <p id="tempoAudio"></p> -->
         </div>
     </div>
 </body>
@@ -196,6 +203,21 @@
             brLegenda.innerHTML = frases[frase]['portugues'];
         }
     }
+    function timerFinish(tempo) 
+    {
+        var intervalo = setInterval(function (){
+            document.querySelector('#timerRedirect').innerHTML = 'Fechando em: ' + tempo;
+            tempo -= 1;
+            if(tempo == -1)
+            {
+                backHome();
+            }
+            else
+            {
+                timerFinish(tempo);
+            }
+        },1000);
+    }
     audio.onplay = function() { 
         enLegenda.innerHTML = frases[0]['ingles'];
         brLegenda.innerHTML = frases[0]['portugues'];
@@ -208,5 +230,9 @@
         enLegenda.stop();
         brLegenda.stop();
     }
+    audio.onended = function finishAudio() {
+        document.querySelector('#alertSuccess').style.display = "block";
+        timerFinish(3);
+    };
 </script>
 </html>
