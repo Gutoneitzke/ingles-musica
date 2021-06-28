@@ -1,0 +1,30 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.content {
+    background-color: rgb(224, 224, 224);
+}
+
+.menu {
+    text-align: center;
+}
+
+li {
+    list-style: none;
+    display: inline;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 12px;
+    color: black;
+}
+
+h5 {
+    text-align: center;
+    background-color: teal;
+    padding: 15px;
+    color: white;
+}

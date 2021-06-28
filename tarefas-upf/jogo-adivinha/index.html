@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo do Adivinha | GN</title>
+    <style>
+        body{
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-align: center;
+            color: #fff;
+            background-image: linear-gradient(to right, rgb(23, 115, 151), rgb(61, 240, 150));
+        }
+        .box-start,
+        .box-choose,
+        .box-nivel,
+        .box-game,
+        .box-finish{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 15px 15px 50px black;
+        }
+        .btn-start,
+        .btn-nivel,
+        .btn-aposta{
+            border: none;
+            outline: none;
+            padding: 15px;
+            background-color: cadetblue;
+            font-size: 15px;
+            color: white;
+            cursor: pointer;
+            border-radius: 15px;
+        }
+        .btn-start{
+            width: 50%;
+        }
+        .btn-start:hover,
+        .btn-nivel:hover,
+        .btn-aposta:hover{
+            background-color: cornflowerblue;
+
+        }
+        .box-choose,
+        .box-nivel,
+        .box-game,
+        .box-finish{
+            display: none;
+        }
+        .btn-play,
+        .btn-reiniciar{
+            border: none;
+            border-radius: 15px;
+            outline: none;
+            color: white;
+            padding: 15px;
+            cursor: pointer;
+            background-color: crimson;
+        }
+        .btn-play:hover,
+        .btn-reiniciar:hover{
+            background-color: darkred;
+        }
+        #aposta{
+            border: none;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            outline: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box-start">
+        <h1>Bem-vindo ao <u>ADIVINHA GN</u></h1>
+        <button onclick="start()" class="btn-start">Iniciar</button>
+    </div>
+    <div class="box-choose">
+        <h1 id="text-choose"></h1>
+        <h3>Escolha um nível:</h3>
+        <button class="btn-nivel" onclick="nivel(1)" title="15 TENTATIVAS">EASY</button>
+        <button class="btn-nivel" onclick="nivel(2)" title="10 TENTATIVAS">MEDIUM</button>
+        <button class="btn-nivel" onclick="nivel(3)" title="5 TENTATIVAS">HARD</button>
+    </div>
+    <div class="box-nivel">
+        <h1 id="text-nivel"></h1>
+        <h3 id="tempo-start"></h3>
+    </div>
+    <div class="box-game">
+        <h1>Escolha um número entre 1 e 100:</h1>
+        <input type="number" placeholder="Digite um número aqui" id="aposta">
+        <button onclick="game()" class="btn-aposta">Enviar</button>
+        <h3 id="numTentativas"></h3>
+        <h3 id="status"></h3>
+        <h3 id="pontos-reiniciar"></h3>
+        <button class="btn-reiniciar" onclick="reiniciar()">Reiniciar jogo</button>
+    </div>
+    <div class="box-finish">
+        <h1>Parabéns!! Você acertou</h1>
+        <h2 id="text-pontos"></h2>
+        <h2 id="text-numCerto"></h2>
+        <h2 id="text-tentativas"></h2>
+        <button class="btn-reiniciar" onclick="reiniciar()">Reiniciar jogo</button>
+    </div>
+    <!-- Jogo da adivinhação -->
+    <!-- O número informado, é maior que o número à ser adivinhado -->
+    <!-- O número informado, é menor que o número à ser adivinhado -->
+    <!-- Parabéns você acertou -->
+    <!-- Game over -->
+    <!-- Tantas tentativas -->
+    <!-- Níveis -> fácil 15 tentativas -> médio -> 10 tentativas -> hard -> 5 tentativas -->
+    <!-- Informar o nome no início -->
+    <!-- Mostrar quantas tentivas o cara tentou -->
+    <!-- Mostrar quantos pontos -->
+    <!-- Fazer um ranking -->
+    <!-- Fazer fases, escolher um número entre 1 e 10, depois entre 1 e 30, depois entre 1 e 50 e por último entre 1 e 100 -->
+</body>
+</html>
+<script>
+    var aleatoryNumber;
+    var nivelText;
+    var tentativas;
+    var tentativasTotal;
+    var name;
+    var aposta;
+    var contagem = 0;
+    function start() {
+        window.name = prompt('Qual o seu nome ?');
+        console.log(name);
+        if(name == 'null' || name == null)
+        {
+            alert('Você só inicia o jogo quando digitar um nome!');
+        }
+        else if(name == '')
+        {
+            alert('Favor digite um nome!');
+        }
+        else
+        {
+            document.querySelector('.box-start').style.display = 'none';
+            document.querySelector('.box-choose').style.display = 'block';
+            document.querySelector('#text-choose').innerHTML = ('Olá ' + name + '! Muito bom ter você aqui ;)');
+        }
+    }
+    function nivel(data)
+    {
+        if(data == 1)
+        {
+            // Fácil
+            window.nivelText = 'EASY';
+            window.tentativas = 15;
+            window.tentativasTotal = 15;
+        }
+        else if(data == 2)
+        {
+            // Médio
+            window.nivelText = 'MEDIUM';
+            window.tentativas = 10;
+            window.tentativasTotal = 10;
+        }
+        else
+        {
+            // Difícil
+            window.nivelText = 'HARD';
+            window.tentativas = 5;
+            window.tentativasTotal = 5;
+        }
+        document.querySelector('.box-choose').style.display = 'none';
+        document.querySelector('.box-nivel').style.display = 'block';
+        document.querySelector('#text-nivel').innerHTML = ('Nível ' + nivelText + '! Você terá: ' + tentativas + ' tentativas ;)');
+        var tempo = 3;
+        var intervalo = setInterval(function(){
+            console.log(tempo);
+            document.querySelector('#tempo-start').innerHTML = 'Começando em: ' + tempo;
+            tempo -= 1;
+            if(tempo == -1)
+            {
+                document.querySelector('.box-nivel').style.display = 'none';
+                document.querySelector('.box-game').style.display = 'block';
+                document.querySelector('#numTentativas').innerHTML = ('Você ainda tem ' + tentativas + ' tentativas');
+                clearInterval(intervalo);
+                window.aleatoryNumber = 1 + Math.floor(Math.random() * 100);
+                console.log('Número a ser acertado: ' + aleatoryNumber);
+            }
+        },1000);
+    }
+    function reiniciar()
+    {
+        window.aleatoryNumber= null;
+        window.contagem = 0;
+        window.nivelText = null;
+        window.tentativas = null;
+        window.aposta = document.querySelector('#aposta').value = '';
+        document.querySelector('#status').innerHTML = '';
+        document.querySelector('.box-game').style.display = 'none';
+        document.querySelector('.box-finish').style.display = 'none';
+        document.querySelector('.box-choose').style.display = 'block';
+    }
+    function game()
+    {
+        window.aposta = document.querySelector('#aposta').value;
+        var status = document.querySelector('#status');
+        var numTentativas = document.querySelector('#numTentativas');
+        numTentativas.innerHTML = ('Você ainda tem ' + tentativas + ' tentativas');
+        if(aposta == null || aposta == '')
+        {
+            alert('Digite um número!')
+        }
+        else if(aposta > 100)
+        {
+            alert('Digite um número menor que 101');
+        }
+        else if(aposta < 1)
+        {
+            alert('Digite um número maior que 0')
+        }
+        else
+        {
+            if(tentativas == 1)
+            {
+                status.innerHTML = 'Game over! Acabou as tentativas ;(';
+                numTentativas.innerHTML = '';
+                document.querySelector('.btn-reiniciar').style.display = 'none';
+                document.querySelector('#pontos-reiniciar').innerHTML = 'Pontuação: 0';
+            }
+            else
+            {
+                tentativas -= 1;
+                window.contagem += 1;
+                if(aposta == aleatoryNumber)
+                {
+                    window.contagem -= 1;
+                    var erroTent = tentativasTotal - contagem;
+                    var pontuacao = (erroTent*100)/tentativasTotal;
+                    document.querySelector('.box-game').style.display = 'none';
+                    document.querySelector('.box-finish').style.display = 'block';
+                    document.querySelector('#text-pontos').innerHTML = 'Pontuação: ' + pontuacao.toFixed(0) + '/100';
+                    document.querySelector('#text-numCerto').innerHTML = 'Número correto: ' + aleatoryNumber;
+                    document.querySelector('#text-tentativas').innerHTML = 'Erros: ' + contagem;
+                    document.querySelector('#text-tentativas').style.color = 'red';
+                    
+                }
+                else if(aposta > aleatoryNumber)
+                {
+                    status.innerHTML = 'ERROU! Digite um número menor';
+                    status.style.color = 'blue';
+                }
+                else
+                {
+                    status.innerHTML = 'ERROU! Digite um número maior';
+                    status.style.color = 'red';
+                }
+                numTentativas.innerHTML = ('Você ainda tem ' + tentativas + ' tentativas');
+                console.log('Nível: ' + nivelText + ' | Tentativas: ' + tentativas + ' | Número a ser acertado: ' + aleatoryNumber);
+                console.log('Aposta: ' + aposta);
+            }
+        }
+    }
+</script>

@@ -1,0 +1,72 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-image: linear-gradient(to right, #184E68, #57CAB5);
+  }
+
+  img {
+    max-width: 300px;
+  }
+
+  h1 {
+    background-color: rgb(14, 14, 14);
+    color: #fff;
+    padding: 10px;
+  }
+
+  .image {
+    background-color: #fff;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 38%;
+    height: 300px;
+    transform: translate(-50%, -50%);
+    padding: 15px;
+  }
+
+  .content {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 62%;
+    height: 300px;
+    transform: translate(-50%, -50%);
+    padding: 15px;
+  }
+  .list{
+    list-style-type: circle;
+  }
+  button {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    outline: none;
+    cursor: pointer;
+  }
+  button:hover{
+    background-color: white;
+    color: black;
+  }
+
+  .bottom-link {
+    border-top: 50px;
+  }
+  .link{
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+  }
+  @media screen and (max-width: 1450px) {
+    .content {
+      left: 50%;
+      top: 85%;
+      width: 80%;
+    }
+    .image {
+      top: 30%;
+      left: 50%;
+    }
+  } 
